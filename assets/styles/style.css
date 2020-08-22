@@ -1,0 +1,28 @@
+.hs-btn{
+    float: left;
+    margin: 50px;
+    font-size: 20px;
+}
+.timer {
+    float: right;
+    padding: 50px;
+    font-size: 30px;
+}
+header h1 {
+    float: center;
+    padding: 50px;
+    text-align: center;
+    color: blue;
+    font-size: 50px;
+}
+.quiz-content{
+    float: center;
+    padding: 50px;
+    text-align: center;
+    font-size: 40px;
+}
+#begin-btn{
+    font-size: 30px;
+    padding: 10px;
+    color: blue;
+}
