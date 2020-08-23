@@ -13,6 +13,6 @@ The Purpose of this project is present a timed coding quiz that will save your s
 All code was written by me Jaydon Goodrich.
 Questions for the quiz were my own as well as some questions came from http://mcqspdfs.blogspot.com/2013/08/60-top-javascript-multiple-choice.html
 
-The site is deployed at https://https://jaydon-goodrich.github.io/code-quiz/
+The site is deployed at https://jaydon-goodrich.github.io/code-quiz/
 
 ![](assets/img/code-quiz.png)
