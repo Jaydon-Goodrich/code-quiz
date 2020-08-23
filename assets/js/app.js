@@ -49,6 +49,7 @@ var countDown = function(stop){
             clearInterval(timeInterval);
         }
         if(timeLeft <= 0){
+            timeLeft = 0;
             clearInterval(timeInterval);
             endQuiz();
         }
