@@ -15,14 +15,33 @@ header h1 {
     color: blue;
     font-size: 50px;
 }
-.quiz-content{
+.quiz-begin{
     float: center;
     padding: 50px;
     text-align: center;
     font-size: 40px;
+    display: block;
 }
 #begin-btn{
     font-size: 30px;
     padding: 10px;
     color: blue;
+}
+ul {
+    list-style-type: none;
+    float: center;
+}
+.quiz-question{
+    float: center;
+    padding: 50px;
+    text-align: center;
+    font-size: 40px;
+    display: none;
+}
+.quiz-button{
+    font-size: 30px;
+    width: 600px;
+    height: 100px;
+    margin-top: 15px;
+    color:blue;
 }
