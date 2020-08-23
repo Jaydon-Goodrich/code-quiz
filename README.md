@@ -11,3 +11,12 @@ The Purpose of this project is present a timed coding quiz that will save your s
 * once the quiz is over users are presented with their score and can save their initials to localStorage
 
 
+TODO 
+clean up
+questions
+console.log debuggers
+comments clean up code
+
+URL and picture in read me
+test
+deploy

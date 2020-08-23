@@ -14,22 +14,23 @@ var listEl = document.getElementById("list-container");
 var scoreButton = document.getElementById("score-btn");
 var inBox = document.getElementById("in-box");
 var showScores = document.getElementById("display-hs");
-var timeLeft = 20;
+var hsTitle = document.getElementById("hs-title");
+var timeLeft = 90;
 var playersArr = [];
 var playerCounter = 0;
 var questionCount = 0;
 var lastClick = "";
 var questionsArr = [
-    { q: "What color is the sky?", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
-    { q: "Quesiton2", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
-    { q: "Question3", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
-    { q: "Question4", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
-    { q: "Question5", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
-    { q: "Question6", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
-    { q: "Question7", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
-    { q: "Question8", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
-    { q: "Question9", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
-    { q: "Question10", a: "blue", b: "green", c: "black", d: "red", answer: "blue"}];
+    { q: "Which of the following type of variable is visible everywhere in your JavaScript code?", a: "Global Variable", b: "Local Variable", c: "Both of the above", d: "None of the above", answer: "Global Variable"},
+    { q: "Which of the following type of variable takes precedence over other if names are same?", a: "Global Variable", b: "Local Variable", c: "Both of the above", d: "None of the above", answer: "Local Variable"},
+    { q: "Which of the following is not a valid JavaScript variable name?", a: "2names", b: "_first_and_last_names", c: "FirstAndLast", d: "None of the above", answer: "2names"},
+    { q: "What are variables used for in JavaScript Programs?", a: "Storing numbers, dates, or other values", b: "Varying randomly", c: "Causing high-school algebra flashbacks", d: "None of the above", answer: "Storing numbers, dates, or other values"},
+    { q: "Inside which HTML element do we put the JavaScript?", a: "<js>", b: "<scripting>", c: "<script>", d: "<javascript>", answer: "<script>"},
+    { q: "Which of the following are capabilities of functions in JavaScript?", a: "Return a value", b: "Accept parameters and Return a value", c: "Accept parameters", d: "None of the above", answer: "Accept parameters"},
+    { q: "What syntax is used when creating an array in JavaScript?", a: "<>", b: "{}", c: "[]", d: "!", answer: "[]"},
+    { q: "What syntax is used when creating an object in JavaScript?", a: "<>", b: "{}", c: "[]", d: "!", answer: "{}"},
+    { q: "what is a valid keyword to create a variable?", a: "var", b: "let", c: "const", d: "all of the above", answer: "all of the above"},
+    { q: "Which are valid keywords to follow a if statement?", a: "then", b: "when", c: "next", d: "else", answer: "else"}];
 
 var countDown = function(stop){
     timerEl.textContent = "Time: " + timeLeft;
@@ -71,7 +72,7 @@ var nextQuestion = function(event){
     else{
         answerBox.style = "display: block";
         answerBox.textContent = "WRONG!"
-        timeLeft = timeLeft - 2;
+        timeLeft = timeLeft - 10;
     }
     if(questionCount === questionsArr.length - 1){
         endQuiz();
@@ -85,6 +86,7 @@ var endQuiz = function(){
     var score = timeLeft;
     timeLeft = null;
     quizEnd.style = "display: block";
+    hsTitle.style = "display: none";
     scoreHead.textContent = "You Scored: " + score + " points!";
     var userName = prompt("Enter your initials");
     var player = {
@@ -109,7 +111,6 @@ var highScores = function(){
 }
 
 var storePlayer = function(obj){
-    debugger;
     var playerObj = obj;
     var newArr = [];
     var oldArr = localStorage.getItem("player");
