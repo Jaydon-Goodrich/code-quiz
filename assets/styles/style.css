@@ -58,11 +58,3 @@ ul {
     border-bottom-style: solid; 
     display: none;
 }
-#name-label{
-    font-size: 30px;
-}
-#nameScore{
-    width: 100px;
-    height: 45px;
-    font-size: 30px;
-}

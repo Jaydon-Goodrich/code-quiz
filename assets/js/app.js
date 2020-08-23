@@ -11,7 +11,12 @@ var quizEnd = document.getElementById("quiz-end-section");
 var scoreHead = document.getElementById("score-head");
 var answerBox = document.getElementById("ansCorrect");
 var listEl = document.getElementById("list-container");
+var scoreButton = document.getElementById("score-btn");
+var inBox = document.getElementById("in-box");
+var showScores = document.getElementById("display-hs");
 var timeLeft = 20;
+var playersArr = [];
+var playerCounter = 0;
 var questionCount = 0;
 var lastClick = "";
 var questionsArr = [
@@ -81,13 +86,64 @@ var endQuiz = function(){
     timeLeft = null;
     quizEnd.style = "display: block";
     scoreHead.textContent = "You Scored: " + score + " points!";
+    var userName = prompt("Enter your initials");
+    var player = {
+        id: playerCounter,
+        name: userName,
+        score: score
+    }
+    storePlayer(player);
+    playerCounter++;
 
 }
 var highScores = function(){
-    
+    var score = timeLeft;
+    timeLeft = null;
+    beginQuiz.style = "display: none";
+    quesStart.style = "display: none";
+    quizEnd.style = "display: block";
+    scoreHead.style = "display: none";
+    showScores.style = "display: none";
+    scoreButton.style = "display: none";
+    getPlayers();
 }
 
+var storePlayer = function(obj){
+    debugger;
+    var playerObj = obj;
+    var newArr = [];
+    var oldArr = localStorage.getItem("player");
+    if (oldArr === null){
+        oldArr = [];
+        oldArr.push(playerObj);
+        localStorage.setItem("player", JSON.stringify(oldArr));
+    }
+    else{
+        oldArr = JSON.parse(oldArr);
+        newArr = oldArr;
+        newArr.push(playerObj);
+        localStorage.setItem("player", JSON.stringify(newArr));
+    }
+    
+}
+var getPlayers = function(){
+    var players = localStorage.getItem("player");
+    if (players === null){
+        players = [];
+        return false;
+    }
+    else{
+        players = JSON.parse(players);
+    }
+    for(var i = 0; i < players.length; i++){
+        var listItem = document.createElement("li");
+        listItem.textContent = players[i].name + " --- " + players[i].score + " points";
+        listEl.appendChild(listItem);
+    }
+}
 
+showScores.onclick = highScores;
+scoreButton.onclick = highScores;
 btnStart.onclick = startQuiz;
 buttonA.addEventListener("click",nextQuestion);
 buttonB.addEventListener("click",nextQuestion);
