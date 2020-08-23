@@ -9,19 +9,22 @@ var buttonD = document.getElementById("btn-d");
 var questionHead = document.getElementById("question-header");
 var quizEnd = document.getElementById("quiz-end-section");
 var scoreHead = document.getElementById("score-head");
-var timeLeft = 10;
+var answerBox = document.getElementById("ansCorrect");
+var listEl = document.getElementById("list-container");
+var timeLeft = 20;
 var questionCount = 0;
+var lastClick = "";
 var questionsArr = [
-    { q: "What color is the sky?", a: "blue", b: "green", c: "black", d: "red"},
-    { q: "Quesiton2", a: "blue", b: "green", c: "black", d: "red"},
-    { q: "Question3", a: "blue", b: "green", c: "black", d: "red"},
-    { q: "Question4", a: "blue", b: "green", c: "black", d: "red"},
-    { q: "Question5", a: "blue", b: "green", c: "black", d: "red"},
-    { q: "Question6", a: "blue", b: "green", c: "black", d: "red"},
-    { q: "Question7", a: "blue", b: "green", c: "black", d: "red"},
-    { q: "Question8", a: "blue", b: "green", c: "black", d: "red"},
-    { q: "Question9", a: "blue", b: "green", c: "black", d: "red"},
-    { q: "Question10", a: "blue", b: "green", c: "black", d: "red"}];
+    { q: "What color is the sky?", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
+    { q: "Quesiton2", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
+    { q: "Question3", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
+    { q: "Question4", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
+    { q: "Question5", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
+    { q: "Question6", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
+    { q: "Question7", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
+    { q: "Question8", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
+    { q: "Question9", a: "blue", b: "green", c: "black", d: "red", answer: "blue"},
+    { q: "Question10", a: "blue", b: "green", c: "black", d: "red", answer: "blue"}];
 
 var countDown = function(stop){
     timerEl.textContent = "Time: " + timeLeft;
@@ -54,7 +57,17 @@ var quizLoop = function(){
     buttonC.textContent = questionsArr[questionCount].c;
     buttonD.textContent = questionsArr[questionCount].d;
 }
-var nextQuestion = function(){
+var nextQuestion = function(event){
+    var targetEl = event.target;
+    if (targetEl.textContent === questionsArr[questionCount].answer){
+        answerBox.textContent = "CORRECT!"
+        answerBox.style = "display: block";
+    }
+    else{
+        answerBox.style = "display: block";
+        answerBox.textContent = "WRONG!"
+        timeLeft = timeLeft - 2;
+    }
     if(questionCount === questionsArr.length - 1){
         endQuiz();
         return;
@@ -68,6 +81,10 @@ var endQuiz = function(){
     timeLeft = null;
     quizEnd.style = "display: block";
     scoreHead.textContent = "You Scored: " + score + " points!";
+
+}
+var highScores = function(){
+    
 }
 
 
