@@ -7,6 +7,8 @@ var buttonB = document.getElementById("btn-b");
 var buttonC = document.getElementById("btn-c");
 var buttonD = document.getElementById("btn-d");
 var questionHead = document.getElementById("question-header");
+var quizEnd = document.getElementById("quiz-end-section");
+var scoreHead = document.getElementById("score-head");
 var timeLeft = 10;
 var questionCount = 0;
 var questionsArr = [
@@ -21,16 +23,20 @@ var questionsArr = [
     { q: "Question9", a: "blue", b: "green", c: "black", d: "red"},
     { q: "Question10", a: "blue", b: "green", c: "black", d: "red"}];
 
-var countDown = function(){
+var countDown = function(stop){
     timerEl.textContent = "Time: " + timeLeft;
     var timeInterval = setInterval(function() {
-    if(timeLeft > 0){
-        timeLeft--;
-        timerEl.textContent = "Time: " + timeLeft;
-    }
-    if(timeLeft === 0){
-        clearInterval(timeInterval);
-    }
+        if(timeLeft > 0){
+            timeLeft--;
+            timerEl.textContent = "Time: " + timeLeft;
+        }
+        if(timeLeft === null){
+            clearInterval(timeInterval);
+        }
+        if(timeLeft === 0){
+            clearInterval(timeInterval);
+            endQuiz();
+        }
     }, 1000);
 }
 
@@ -56,6 +62,13 @@ var nextQuestion = function(){
     questionCount++;
     quizLoop();
 }
+var endQuiz = function(){
+    quesStart.style = "display: none";
+    var score = timeLeft;
+    timeLeft = null;
+    quizEnd.style = "display: block";
+    scoreHead.textContent = "You Scored: " + score + " points!";
+}
 
 
 btnStart.onclick = startQuiz;
@@ -63,4 +76,3 @@ buttonA.addEventListener("click",nextQuestion);
 buttonB.addEventListener("click",nextQuestion);
 buttonC.addEventListener("click",nextQuestion);
 buttonD.addEventListener("click",nextQuestion);
-console.log(questionsArr.length);
