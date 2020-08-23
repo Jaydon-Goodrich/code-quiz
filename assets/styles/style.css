@@ -1,3 +1,4 @@
+/* style for the 3 elements running along the top of the screen */
 .hs-btn{
     float: left;
     margin: 50px;
@@ -15,6 +16,7 @@ header h1 {
     color: blue;
     font-size: 50px;
 }
+/* Styles for the opening main content screen */
 .quiz-begin{
     float: center;
     padding: 50px;
@@ -31,6 +33,7 @@ ul {
     list-style-type: none;
     float: center;
 }
+/* Styles for the quiz questions and the buttons */
 .quiz-question{
     float: center;
     padding: 50px;
@@ -45,6 +48,7 @@ ul {
     margin-top: 15px;
     color:blue;
 }
+/* styles for the end section */
 .quiz-end{
     float: center;
     padding: 50px;
@@ -53,6 +57,7 @@ ul {
     display: none;
 
 }
+/* styles for displaying correct or wrong */
 #ansCorrect{
     border-bottom: blue;
     border-bottom-style: solid; 

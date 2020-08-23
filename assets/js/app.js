@@ -1,3 +1,4 @@
+//variables used to pull and manipulate elements from the DOM
 var timerEl = document.getElementById("time-left");
 var beginQuiz = document.getElementById("quiz-beg");
 var quesStart = document.getElementById("question-start");
@@ -15,11 +16,15 @@ var scoreButton = document.getElementById("score-btn");
 var inBox = document.getElementById("in-box");
 var showScores = document.getElementById("display-hs");
 var hsTitle = document.getElementById("hs-title");
+
+//global variables used to store data
 var timeLeft = 90;
 var playersArr = [];
 var playerCounter = 0;
 var questionCount = 0;
 var lastClick = "";
+
+// questions array with 4 possible answers and the correct answer
 var questionsArr = [
     { q: "Which of the following type of variable is visible everywhere in your JavaScript code?", a: "Global Variable", b: "Local Variable", c: "Both of the above", d: "None of the above", answer: "Global Variable"},
     { q: "Which of the following type of variable takes precedence over other if names are same?", a: "Global Variable", b: "Local Variable", c: "Both of the above", d: "None of the above", answer: "Local Variable"},
@@ -32,6 +37,7 @@ var questionsArr = [
     { q: "what is a valid keyword to create a variable?", a: "var", b: "let", c: "const", d: "all of the above", answer: "all of the above"},
     { q: "Which are valid keywords to follow a if statement?", a: "then", b: "when", c: "next", d: "else", answer: "else"}];
 
+// used as a timer of value of timeLeft
 var countDown = function(stop){
     timerEl.textContent = "Time: " + timeLeft;
     var timeInterval = setInterval(function() {
@@ -49,12 +55,14 @@ var countDown = function(stop){
     }, 1000);
 }
 
+// Starts the countDown function and displays the questions
 var startQuiz = function(){
     beginQuiz.style = "display: none";
     quizLoop();
     countDown();
 }
 
+//This function loops through the array of questions and displays them
 var quizLoop = function(){
     quesStart.style = "display: block";
     questionHead.textContent = questionsArr[questionCount].q;
@@ -63,6 +71,8 @@ var quizLoop = function(){
     buttonC.textContent = questionsArr[questionCount].c;
     buttonD.textContent = questionsArr[questionCount].d;
 }
+
+//This function will check the if the answer is correct, move on to the next question and subtract 10 seconds if the user is wrong
 var nextQuestion = function(event){
     var targetEl = event.target;
     if (targetEl.textContent === questionsArr[questionCount].answer){
@@ -81,6 +91,8 @@ var nextQuestion = function(event){
     questionCount++;
     quizLoop();
 }
+
+// This function will display the endQuiz screen when time runs out or all questions have been answered
 var endQuiz = function(){
     quesStart.style = "display: none";
     var score = timeLeft;
@@ -98,6 +110,8 @@ var endQuiz = function(){
     playerCounter++;
 
 }
+
+// This function will call getPlayers and display the players high scores screen when executed
 var highScores = function(){
     var score = timeLeft;
     timeLeft = null;
@@ -110,6 +124,7 @@ var highScores = function(){
     getPlayers();
 }
 
+//Start of storePlayer function that will save a player array to localStorage
 var storePlayer = function(obj){
     var playerObj = obj;
     var newArr = [];
@@ -127,6 +142,8 @@ var storePlayer = function(obj){
     }
     
 }
+
+//Start of getPlayers function that will get a player array from localStorage
 var getPlayers = function(){
     var players = localStorage.getItem("player");
     if (players === null){
@@ -143,6 +160,7 @@ var getPlayers = function(){
     }
 }
 
+// onclick event listeners to trigger multiple functions
 showScores.onclick = highScores;
 scoreButton.onclick = highScores;
 btnStart.onclick = startQuiz;
