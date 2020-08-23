@@ -48,8 +48,7 @@ var countDown = function(stop){
         if(timeLeft === null){
             clearInterval(timeInterval);
         }
-        if(timeLeft <= 0){
-            timeLeft = 0;
+        if(timeLeft === 0){
             clearInterval(timeInterval);
             endQuiz();
         }
